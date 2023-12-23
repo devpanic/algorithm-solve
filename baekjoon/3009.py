@@ -1,24 +1,22 @@
 import sys
 
-x_y_list = []
+x_list = []
+y_list = []
 
 for _ in range(3):
-    x_y_list.append(list(map(int, sys.stdin.readline().split())))
+    x, y = map(int, sys.stdin.readline().split())
+    x_list.append(x)
+    y_list.append(y)
 
-degree_list = []
+x_list.sort()
+y_list.sort()
 
-for i in range(0, 3):
-    x_degree = x_y_list[i][0] - x_y_list[i - 1][0]
-    y_degree = x_y_list[i][1] - x_y_list[i - 1][1]
-    if x_degree != 0 and y_degree != 0:
-        degree_list.append(y_degree / x_degree)
-    elif y_degree == 0:
-        degree_list.append(1)
-    else:
-        degree_list.append(0)
+if x_list.count(x_list[0]) == 1:
+    print(x_list[0], end=" ")
+else:
+    print(x_list[2], end=" ")
 
-# if degree_list[0] == degree_list[1]:
-
-# elif degree_list[1] == degree_list[2]:
-# elif degree_list[2] == degree_list[0]:
-    print(degree_list)
+if y_list.count(y_list[0]) == 1:
+    print(y_list[0])
+else:
+    print(y_list[2])
